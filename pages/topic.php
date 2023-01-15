@@ -5,7 +5,16 @@ if (!isset($_SESSION['auth'])) {
     $_SESSION['flash'] = 'Please sign in first';
     header('Location: /login');
 }
+
 $topic_id = $params['topicSlug'];
+
+if (!empty($_POST)) {
+    $date = date('Y-m-d H:i');
+    $query = "INSERT INTO comments (comment_text, user_id, topic_id, comment_date) VALUES ('$_POST[comment_text]', $_SESSION[user_id], $topic_id, '$date')";
+    mysqli_query($link, $query);
+    unset($_POST);
+    header("Location: /main/topic$topic_id");
+}
 
 $query = "SELECT * FROM topics WHERE topic_id = $topic_id";
 $topic = mysqli_fetch_assoc(mysqli_query($link, $query));
@@ -26,8 +35,39 @@ $content .= "
         </article>
     ";
 
+$query = "SELECT * FROM comments WHERE topic_id = $topic_id";
+$commentsSQL = mysqli_query($link, $query);
+for ($comments = []; $comment = mysqli_fetch_assoc($commentsSQL); $comments[] = $comment);
+
+$content .= '<section class="main__comments comments">';
+
+$content .= '
+    <p class="comments__title">COMMENTS</p>
+    <form method="POST">
+        <input name="comment_text" class="main__form comments__form">
+        <input type="submit" class="button comments__submit" value="SUBMIT">
+    </form>
+';
+
+foreach ($comments as $comment) {
+    $query = "SELECT * FROM users WHERE user_id = $comment[user_id]";
+    $author = mysqli_fetch_assoc(mysqli_query($link, $query));
+    $content .= "
+        <article class='comments__item'>
+            <p class='comments__user'>$author[login]</p>
+            <p class='comments__text'>$comment[comment_text]</p>
+            <time datetime='$comment[comment_date]' class='comments__date'>$comment[comment_date]</time>
+        </article>
+    ";
+}
+
+$content .= '</section>';
+
+
+
 return [
     'title' => $topic['topic_head'] ,
-    'content' => $content
+    'content' => $content,
+    'css' => 'topic.css'
 ];
 ?>

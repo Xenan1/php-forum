@@ -39,6 +39,7 @@ $layout = preg_replace('#{{ content }}#', $page['content'], $layout);
 $layout = preg_replace('#{{ title }}#', $page['title'], $layout);
 $layout = preg_replace('#{{ header }}#', $header, $layout);
 $layout = preg_replace('#{{ footer }}#', $footer, $layout);
+$layout = preg_replace('#{{ css }}#', $page['css'], $layout);
 
 echo $layout;
 

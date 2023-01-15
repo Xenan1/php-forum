@@ -4,11 +4,11 @@ session_start();
 
 if (empty($_POST)) {
     $content = "
-    <form action='' method='POST'>
-        <input name='login' placeholder='LOGIN'>
-        <input name='password' type='password' placeholder='PASSWORD'>
-        <input name='confirm_password' type='password' placeholder='CONFIRM PASSWORD'>
-        <input type='submit' value='OK'>
+    <form action='' method='POST' class='main__form'>
+        <input name='login' placeholder='LOGIN' class='main__form-login'>
+        <input name='password' type='password' placeholder='PASSWORD' class='main__form-password'>
+        <input name='confirm_password' type='password' placeholder='CONFIRM PASSWORD' class='main__form-password'>
+        <input type='submit' value='OK' class='button main__form-submit-button'>
     </form>
     ";
     if (isset($_SESSION['flash'])) {
@@ -22,7 +22,8 @@ if (empty($_POST)) {
 
     return [
         'title' => 'Registration',
-        'content' => $content
+        'content' => $content,
+        'css' => 'registration.css'
     ];
 } else {
     require '../php-forum/validation.php';

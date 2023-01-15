@@ -1,0 +1,14 @@
+.header__content {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    padding-inline: 40px;
+    align-items: center;
+    height: 50px;
+}
+.header {
+    background-color: rgb(160, 209, 255);
+}
+.header__text {
+    font-size: 20px;
+}

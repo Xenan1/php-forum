@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    background-color: rgb(205, 231, 255);
+    color: rgb(36, 95, 150);
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 100vh;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.page__header {
+    flex: 0 0 auto;
+}
+.page__main {
+    flex: 1 0 auto;
+    padding: 20px;
+    padding-inline: 40px;
+}
+.page__footer {
+    flex: 0 0 auto;
+}
+.flash-message {
+    color: rgb(255, 75, 75);
+}
+.button {
+    text-decoration: none;
+    font-weight: 600;
+    color: rgb(36, 95, 150);
+    background-color: rgb(160, 209, 255);
+    align-self: center;
+    padding: 10px;
+    border: 3px solid rgb(36, 95, 150);
+    transition: 0.3s;
+}
+.button:hover {
+    background-color: rgb(36, 95, 150);
+    color: rgb(160, 209, 255);
+}
+.main__form {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    gap: 5px;
+    margin-block: 20px;
+}
+.main__form-submit-button {
+    width: 30%;
+    align-self: flex-start;
+    padding: 5px;
+}
+.main__redirect-button {
+    color: rgb(36, 95, 150);
+}

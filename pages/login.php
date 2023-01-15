@@ -3,10 +3,10 @@ session_start();
 
 if (empty($_POST)) {
     $content = "
-    <form action='' method='POST'>
+    <form action='' method='POST' class='main__form'>
         <input name='login' placeholder='LOGIN'>
         <input name='password' type='password' placeholder='PASSWORD'>
-        <input type='submit' value='LOG IN'>
+        <input type='submit' value='LOG IN' class='main__form-submit-button button'>
     </form>
     ";
     if (isset($_SESSION['flash'])) {
@@ -18,7 +18,8 @@ if (empty($_POST)) {
 
     return [
         'title' => 'Log In',
-        'content' => $content
+        'content' => $content,
+        'css' => 'login.css'
     ];
 } else {
     $query = "SELECT * FROM users WHERE login = '$_POST[login]'";

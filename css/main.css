@@ -1,4 +1,17 @@
-body {
-    margin: 0;
-    background-color: rgb(205, 231, 255);
+.main__topic {
+    border: 3px solid rgb(36, 95, 150);
+    background-color: rgb(133, 196, 255);
+    border-radius: 25px;
+    padding: 15px;
+    margin-block: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.main__topic-head-text {
+    text-decoration: none;
+    color: rgb(32, 81, 128)
+}
+.main__topic-head-user, .main__topic-date {
+    color: rgb(48, 116, 180);
 }

@@ -1,0 +1,10 @@
+.page__footer {
+    background-color: rgb(160, 209, 255);
+}
+.footer__content {
+    display: flex;
+    padding: 10px;
+    padding-inline: 40px;
+    height: 50px;
+    align-items: center ;
+}
