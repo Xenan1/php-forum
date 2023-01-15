@@ -1,0 +1,21 @@
+.main__admin-form {
+    display: flex;
+    gap: 10px;
+}
+.main__user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  
+    width: 100%;
+    margin-block: 5px;
+}
+.main__admin-submit {
+    padding-block: 3px;
+}
+.main__users-list {
+    list-style-type: none;
+    width: 50%;
+}
+.main__return-button {
+    padding-block: 5px;
+}

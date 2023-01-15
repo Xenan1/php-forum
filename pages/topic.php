@@ -9,11 +9,18 @@ if (!isset($_SESSION['auth'])) {
 $topic_id = $params['topicSlug'];
 
 if (!empty($_POST)) {
-    $date = date('Y-m-d H:i');
-    $query = "INSERT INTO comments (comment_text, user_id, topic_id, comment_date) VALUES ('$_POST[comment_text]', $_SESSION[user_id], $topic_id, '$date')";
-    mysqli_query($link, $query);
-    unset($_POST);
-    header("Location: /main/topic$topic_id");
+    if (strlen($_POST['comment_text']) != '') {
+        var_dump($_POST['comment_text']);
+        unset($_POST);
+        header("Location: /main/topic$topic_id");
+    } else {
+        $date = date('Y-m-d H:i:s');
+        $query = "INSERT INTO comments (comment_text, user_id, topic_id, comment_date) VALUES ('$_POST[comment_text]', $_SESSION[user_id], $topic_id, '$date')";
+        mysqli_query($link, $query);
+        unset($_POST);
+        header("Location: /main/topic$topic_id");
+    }
+    
 }
 
 $query = "SELECT * FROM topics WHERE topic_id = $topic_id";
@@ -23,6 +30,11 @@ $query = "SELECT * FROM users WHERE user_id = $topic[user_id]";
 $creatorUser = mysqli_fetch_assoc(mysqli_query($link, $query));
 
 $content = "<a class='main__redirect-button' href='/main'>Return</a>";
+
+if (isset($_SESSION['flash'])) {
+    $content .= "<p class='flash-message'>$_SESSION[flash]</p>";
+    unset($_SESSION['flash']);
+}
 
 $content .= "
         <article class='main__topic'>

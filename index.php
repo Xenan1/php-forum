@@ -35,6 +35,11 @@ if (preg_match("#$route#", $url, $params)) {
     unset($_SESSION['auth']);
     header('Location: /login');
 }
+
+$route = '/admin$';
+if (preg_match("#$route#", $url, $params)) {
+    $page = require 'pages/admin.php';
+}
 $layout = preg_replace('#{{ content }}#', $page['content'], $layout);
 $layout = preg_replace('#{{ title }}#', $page['title'], $layout);
 $layout = preg_replace('#{{ header }}#', $header, $layout);

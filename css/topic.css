@@ -6,3 +6,23 @@
 .main__topic-head-text {
     font-size: 25px;
 }
+.main__comments {
+    border-top: 1px solid rgb(123, 173, 219);
+    margin-top: 20px;
+}
+.comments__text {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.comments__date {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 13px;
+}
+.comments__item {
+    margin-block: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+.comments__user, .comments__text {
+    margin-block: 5px;
+}

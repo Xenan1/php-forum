@@ -23,6 +23,10 @@ for ($topics = []; $topic = mysqli_fetch_assoc($topicsSQL); $topics[] = $topic);
 
 $content = '';
 
+if ($_SESSION['status'] == 'admin') {
+    $content .= "<a class='button' href='/admin'>ADMIN PAGE</a>";
+}
+
 $createTopic = "
     <form action='' method='POST' class='main__form '>
         <input name='topic_head' placeholder='HEAD'>
